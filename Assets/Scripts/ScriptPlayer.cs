@@ -5,69 +5,59 @@ using UnityEngine;
 public class ScriptPlayer : MonoBehaviour
 {
     Rigidbody2D rigidAmber;
-    public float velocidadMax;
+    public float velocidadMax=2; 
     Animator animAmber;
 
-    bool canMove = true;
-
     //Jumping vars
-    bool inFloor = false;
-    float checkFloorRadius = 0.2f;
-    public LayerMask floorLayer;
-    public Transform checkFloor;
-    public float jumpPower;
+    public float jumpPower=2;
+    public bool improvedJump=false; 
+    public float fallMultiplier = 0.5f;
+    public float lowJumpMultiplier = 1f;
 
-    //Turn Amber
-    bool turnAmber = true;
     SpriteRenderer renderAmber;
 
-    // Start is called before the first frame update
     void Start()
     {
-     rigidAmber = GetComponent<Rigidbody2D>();  
+     rigidAmber = GetComponent<Rigidbody2D>(); 
      renderAmber = GetComponent<SpriteRenderer>();
-     animAmber = GetComponent<Animator>();   
+     animAmber = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-     if (canMove && inFloor && Input.GetAxis("Jump") > 0){
-         animAmber.SetBool("inFloor", false);
-         rigidAmber.velocity = new Vector2(rigidAmber.velocity.x, 0f);
-         rigidAmber.AddForce(new Vector2(0, jumpPower), ForceMode2D.Impulse);
-         inFloor = false;
-     }
-
-     inFloor = Physics2D.OverlapCircle(checkFloor.position, checkFloorRadius, floorLayer);
-     animAmber.SetBool("inFloor", inFloor);
-
-     float move = Input.GetAxis("Horizontal");
-
-     if (canMove){
-        if(move > 0 && !turnAmber){
-            MakeTurn();
-        } else if (move < 0 && turnAmber){
-            MakeTurn();
+        if (Input.GetKey("d") || Input.GetKey("right")){
+            rigidAmber.velocity = new Vector2(velocidadMax,rigidAmber.velocity.y);
+            renderAmber.flipX = false;
+            animAmber.SetBool("isRunning", true);
+        } else
+        if (Input.GetKey("a") || Input.GetKey("left")){
+            rigidAmber.velocity = new Vector2(-velocidadMax,rigidAmber.velocity.y);
+            renderAmber.flipX = true;
+            animAmber.SetBool("isRunning", true);
+        } else {
+            rigidAmber.velocity = new Vector2(0, rigidAmber.velocity.y);
+            animAmber.SetBool("isRunning", false);
         }
-        
-        rigidAmber.velocity = new Vector2(move * velocidadMax, rigidAmber.velocity.y);
-
-        //Make Amber Run
-        animAmber.SetFloat("VelMov", Mathf.Abs(move));
-     }else{
-        rigidAmber.velocity = new Vector2(0, rigidAmber.velocity.y);
-        animAmber.SetFloat("VelMov", 0);
-     }   
-
-    }
-
-    void MakeTurn(){
-        turnAmber = !turnAmber;
-        renderAmber.flipX = !renderAmber.flipX;    
-    }
-
-    public void changeStateCanMove(){
-        canMove = !canMove;
+        if (Input.GetKey("space") && CheckFloor.isFloor){
+            rigidAmber.velocity = new Vector2(rigidAmber.velocity.x, jumpPower);
+        }
+        if (CheckFloor.isFloor==false)
+        {
+            animAmber.SetBool("isJumping", true);
+            animAmber.SetBool("isRunning", false);
+        }
+        if (CheckFloor.isFloor==true)
+        {
+            animAmber.SetBool("isJumping", false);
+        }
+        if (improvedJump){
+            if (rigidAmber.velocity.y<0){
+                rigidAmber.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
+            }
+            if (rigidAmber.velocity.y>0 && !Input.GetKey("space")){
+                rigidAmber.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            }
+        }
     }
 }
