@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScriptCamera : MonoBehaviour
 {
     public Transform target;
-    public float soften = 5f;
+    public float soften = 20f;
     Vector3 offset;
 
     // Start is called before the first frame update
