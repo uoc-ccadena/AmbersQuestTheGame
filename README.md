@@ -3,7 +3,6 @@ UOC TFG Videogame 2022
 
 
 PLAY THE GAME
-
 Double click on AmbersQuest.exe on the Executable folder.
 
 CONTROLS
