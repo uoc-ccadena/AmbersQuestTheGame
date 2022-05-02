@@ -8,10 +8,16 @@ public class CheckFloor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isFloor = true;
+        if (collision.CompareTag("Ground"))
+        {
+            isFloor = true;
+        }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        isFloor = false;
+        if (collision.CompareTag("Ground"))
+        {
+            isFloor = false;
+        }
     }
 }

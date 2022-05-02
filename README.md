@@ -1,10 +1,16 @@
 # AmbersQuest
 UOC TFG Videogame 2022
 
-Version v1, Amber stays idle and runs!
+PLAY THE GAME
+Double click on AmbersQuest.exe on the Executable folder.
 
-Version v2, Amber jumps and camera follows.
+CONTROLS
+Space: Jump
+Space+Space: Double Jump
+e: Enter door on main menu
+a or <- : Move left
+d or -> : Move right
 
-Version 3, Enemies, traps ans objects. 
-
-Amber runs and bounces over enemie's heads!
+OBJECTIVE
+Collect all the fruits to complete the level.
+Kill enemies by bouncing over them.

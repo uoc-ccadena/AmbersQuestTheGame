@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DamageEnemy : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class DamageEnemy : MonoBehaviour
     public GameObject destroyParticle;
     public float jumpBounce = 2.5f;
     public int lifes = 2;
+    public AudioSource killEnemy;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -33,12 +35,13 @@ public class DamageEnemy : MonoBehaviour
         {
             destroyParticle.SetActive(true);
             enemyRenderer.enabled = false;
+            killEnemy.Play();
             Invoke("EnemyDie", 0.2f);
         }
     }
 
     public void EnemyDie()
     {
-        Destroy(gameObject);
+                Destroy(gameObject);
     }
 }
