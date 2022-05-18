@@ -10,6 +10,14 @@ public class PauseManager : MonoBehaviour
     public GameObject panelOptions;
     public AudioSource clicOptions;
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+           Invoke("PanelOptions",0); 
+        }
+    }
+    
     public void PanelOptions()
     {
         Time.timeScale = 0;
@@ -20,11 +28,6 @@ public class PauseManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1;
-    }
-
-    public void SettingsPanel()
-    {
-        //A completar, panel con controles
     }
 
     public void Return()
