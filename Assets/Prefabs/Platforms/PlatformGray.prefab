@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1616711654872278212}
   - component: {fileID: 5457563526264899903}
   - component: {fileID: 8148364238743160760}
-  - component: {fileID: 5521262185663640105}
+  - component: {fileID: 93303511459388440}
   m_Layer: 0
   m_Name: PlatformGray
   m_TagString: Ground
@@ -150,7 +150,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.30079913, y: 0.029910147}
   m_EdgeRadius: 0
---- !u!114 &5521262185663640105
+--- !u!114 &93303511459388440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,7 +159,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2063939479146689238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43842f5990ac38045a50e83c064c88ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 74c4029539dfa3645a1990f76226bbca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startWait: 0.1
+  startWait: 0
+  platformSpeed: 0.5
+  movePoints: []
+  startWaitPlatform: 2

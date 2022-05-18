@@ -18,6 +18,7 @@ public class Platforms : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp("s"))
         {
             totalWait = startWait;
+            StartCoroutine(RestartPlatform());
         }
         
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey("s"))
@@ -38,5 +39,11 @@ public class Platforms : MonoBehaviour
             platEffector.rotationalOffset = 0;
         }
         
+    }
+
+    IEnumerator RestartPlatform()
+    {
+        yield return new WaitForSeconds(0.1f);
+        platEffector.rotationalOffset = 0;
     }
 }

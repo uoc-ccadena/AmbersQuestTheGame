@@ -1,8 +1,12 @@
 # AmbersQuest
-UOC TFG Videogame 2022
+UOC TFG Videogame 2022 - Carlos Cadena Torres
+
+Free to use, modify and distribute. Share the love.
 
 
 *************PLAY THE GAME*************
+
+Download the Executable folder.
 
 Double click on AmbersQuest.exe on the Executable folder.
 
@@ -15,17 +19,23 @@ Space: Jump
 
 Space+Space: Double Jump
 
-e: Enter door on main menu
+E: Enter door on main menu
 
-a or <- : Move left
+A or <- : Move left
 
-d or -> : Move right
+D or -> : Move right
+
+S or arrow down: Drop down platform
+
+ESC or clic the settings icon to pause the game
 
 
 
 
 *************OBJECTIVE*************
 
-Collect all the fruits to complete the level.
+You need to collect all fruits scattered through the level to complete it. Some will be hidden!
 
-Kill enemies by bouncing over them.
+Kill enemies by bouncing over their heads.
+
+Beware with enemies shooting projectiles!
